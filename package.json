@@ -1,8 +1,8 @@
 {
   "build": {
-    "productName": "Mini-SK-Computador-27-10-B (teste 10280455)",
-    "appId": "com.maikon.app.nteste10280455",
-    "executableName": "Mini-SK-Computador-27-10-B-nteste10280455"
+    "productName": "Mini-SK-Computador-27-10-B (teste 10280457)",
+    "appId": "com.maikon.app.nteste10280457",
+    "executableName": "Mini-SK-Computador-27-10-B-nteste10280457"
   },
-  "portaDoPrograma": 10380
+  "portaDoPrograma": 10386
 }

@@ -29,13 +29,13 @@ jobs:
         run: |
           $icone = @()
           if (Test-Path "icons\icon-512.png") { $icone = @("--icon", "icons\icon-512.png") }
-          python -m PyInstaller --onefile --console --name "mini-sk-computador-27-10-b-teste-10280451" @icone --add-data "exe\www;www" --distpath dist-exe exe\abrir.py
+          python -m PyInstaller --onefile --console --name "mini-sk-computador-27-10-b-teste-10280456" @icone --add-data "exe\www;www" --distpath dist-exe exe\abrir.py
       - name: Conferir se o programa liga e abre o app
         shell: pwsh
         run: |
           $env:SEM_ABRIR = "1"
           $env:PORTA = "7799"
-          $p = Start-Process -FilePath "dist-exe\mini-sk-computador-27-10-b-teste-10280451.exe" -PassThru
+          $p = Start-Process -FilePath "dist-exe\mini-sk-computador-27-10-b-teste-10280456.exe" -PassThru
           Start-Sleep -Seconds 12
           $r = Invoke-WebRequest -Uri "http://127.0.0.1:7799/" -UseBasicParsing
           Stop-Process -Id $p.Id -Force
@@ -45,11 +45,11 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           tag_name: exe-${{ github.run_number }}
-          name: "Mini-SK-Computador-27-10-B (teste 10280451) ${{ github.run_number }}"
-          files: dist-exe/mini-sk-computador-27-10-b-teste-10280451.exe
+          name: "Mini-SK-Computador-27-10-B (teste 10280456) ${{ github.run_number }}"
+          files: dist-exe/mini-sk-computador-27-10-b-teste-10280456.exe
       - name: Entregar também em Artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: mini-sk-computador-27-10-b-teste-10280451-Windows
-          path: dist-exe/mini-sk-computador-27-10-b-teste-10280451.exe
+          name: mini-sk-computador-27-10-b-teste-10280456-Windows
+          path: dist-exe/mini-sk-computador-27-10-b-teste-10280456.exe
           retention-days: 30

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-Mini-SK-Computador-27-10-B (teste 10280451) — programa .exe LEVE (Python), feito pelo Mini SK.
+Mini-SK-Computador-27-10-B (teste 10280456) — programa .exe LEVE (Python), feito pelo Mini SK.
 
 Não usa Electron: por isso é pequeno e não dá tela preta.
 Você dá dois cliques, abre uma janelinha preta que "liga" o app,
 e ele aparece numa janela própria do Edge/Chrome (modo app).
 O site inteiro (pasta www) vai guardado DENTRO do .exe.
 
-- Porta fixa (7864): é ela que guarda os seus dados. Não mude.
+- Porta fixa (7869): é ela que guarda os seus dados. Não mude.
 - Só o próprio computador acessa (127.0.0.1). Ninguém de fora entra.
 - Se já estiver ligado, clicar de novo só abre a janela outra vez.
 - Para fechar de vez: feche a janelinha preta.
@@ -20,8 +20,8 @@ try:
 except Exception:
     pass
 
-NOME = 'Mini-SK-Computador-27-10-B (teste 10280451)'
-PORTA = int(os.environ.get('PORTA', '7864'))
+NOME = 'Mini-SK-Computador-27-10-B (teste 10280456)'
+PORTA = int(os.environ.get('PORTA', '7869'))
 ENDERECO = 'http://127.0.0.1:%d/' % PORTA
 # "lacre" já ligado de fábrica: o ⚡ Node (WebContainer) funciona no computador sem recarregar
 ISOLAR = False
