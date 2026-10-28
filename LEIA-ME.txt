@@ -1,0 +1,20 @@
+MINI SK NO COMPUTADOR — pasta pronta (sem Electron, sem .exe, sem GitHub)
+
+COMO ABRIR
+1. Extraia esta pasta (botao direito no .zip > Extrair tudo). Pode deixar em Documentos.
+2. Dois cliques em INICIAR-MINI-SK.bat
+   - Se o Windows avisar "O Windows protegeu o computador": Mais informacoes > Executar assim mesmo.
+3. Na PRIMEIRA vez ele baixa sozinho, para dentro da pasta "ferramentas":
+   o Python portatil (uns 11 MB) e o Node portatil (npm e node, uns 30 MB). Nao instala nada no Windows.
+4. Abre uma janelinha preta (e ela que liga tudo, pode minimizar) e o Mini SK numa janela propria.
+   Tambem aparece o atalho "Mini SK" na Area de Trabalho para as proximas vezes.
+5. Para DESLIGAR: feche a janelinha preta.
+
+O QUE TEM DENTRO
+- Editor, arvore, previa (inclusive .tsx), Raio-X das dependencias, Caca-Bug (com a comparacao do Laboratorio).
+- Node (WebContainer) ja com o lacre ligado.
+- Terminal do computador de verdade (npm, node, python, git...) ligado na arvore:
+  os projetos ficam em Documentos\Mini-SK\NOME-DO-PROJETO; o que o terminal cria aparece sozinho na arvore.
+
+SEUS PROJETOS DO CELULAR
+No celular: Projetos > Baixar backup de tudo. Mande o arquivo para o computador e abra no Mini SK daqui.

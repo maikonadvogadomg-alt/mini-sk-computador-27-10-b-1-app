@@ -1,0 +1,55 @@
+# Programa .exe LEVE (Python, um arquivo só), feito pelo Mini SK.
+# Sem Electron: pequeno e sem tela preta. Abre o app numa janela do Edge/Chrome.
+name: "Programa .exe para Windows"
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  exe:
+    runs-on: windows-latest
+    timeout-minutes: 30
+    steps:
+      - name: Baixar o código
+        uses: actions/checkout@v4
+      - name: Instalar o Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Instalar o PyInstaller
+        run: python -m pip install pyinstaller pillow
+      - name: Separar o site (pasta www)
+        shell: pwsh
+        run: |
+          robocopy . exe\www /E /XD .git .github exe android node_modules release electron .sk dist-exe /XF *.zip apk.config.json package-lock.json
+          if ($LASTEXITCODE -ge 8) { throw "Não consegui copiar o site" }
+          exit 0
+      - name: Montar o .exe (o site vai dentro)
+        shell: pwsh
+        run: |
+          $icone = @()
+          if (Test-Path "icons\icon-512.png") { $icone = @("--icon", "icons\icon-512.png") }
+          python -m PyInstaller --onefile --console --name "mini-sk-computador-27-10-b-1" @icone --add-data "exe\www;www" --distpath dist-exe exe\abrir.py
+      - name: Conferir se o programa liga e abre o app
+        shell: pwsh
+        run: |
+          $env:SEM_ABRIR = "1"
+          $env:PORTA = "7799"
+          $p = Start-Process -FilePath "dist-exe\mini-sk-computador-27-10-b-1.exe" -PassThru
+          Start-Sleep -Seconds 12
+          $r = Invoke-WebRequest -Uri "http://127.0.0.1:7799/" -UseBasicParsing
+          Stop-Process -Id $p.Id -Force
+          if ($r.StatusCode -ne 200) { Write-Error "O programa não abriu o app"; exit 1 }
+          Write-Host "OK: o programa ligou e entregou o app"
+      - name: Entregar para baixar (Releases)
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: exe-${{ github.run_number }}
+          name: "Mini-SK-Computador-27-10-B (1) ${{ github.run_number }}"
+          files: dist-exe/mini-sk-computador-27-10-b-1.exe
+      - name: Entregar também em Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: mini-sk-computador-27-10-b-1-Windows
+          path: dist-exe/mini-sk-computador-27-10-b-1.exe
+          retention-days: 30
